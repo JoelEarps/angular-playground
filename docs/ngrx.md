@@ -41,3 +41,41 @@ In the future you want to turn this into the module format to make it representa
 ### Adding to standalone app
 
 provide state to app config through providers
+
+provideStore(),
+provideEffects([]),
+
+NullInjectorError: No provider for InjectionToken @ngrx/store Root Store Provider!
+
+Store updates are immutable, you are overwriting data, you cannot update information and pass that to a store. You have to directly replace what is in the current store.
+
+## Root vs Feature
+
+StoreModule.forRoot({}),
+StoreModule.forFeature
+
+## Creating Actions
+
+Action Group
+
+createAction
+
+Creating Actions for Failures and Success Scenarios is also Common
+
+export const sendForgotPwEmail = createAction(`${forgottenPasswordPrefix} Send Forgot Password Email`, props<{ email: string }>());
+export const sendForgotPwEmailSuccess = createAction(`${forgottenPasswordPrefix} Send Forgot Password Email Success`);
+export const sendForgotPwEmailFailed = createAction(`${forgottenPasswordPrefix} Send Forgot Password Email Failed`);
+export const resetEmailSent = createAction(`${forgottenPasswordPrefix} Reset Email Sent`);
+
+## Creating Reducers
+
+export const myGitInfoReducer = createReducer(
+initialState,
+on(myGitInfoAction, (state, actions) => {})
+);
+
+create reducer needs an initial state and something to do upon an action being called.
+
+on function
+
+## Creating Selectors
