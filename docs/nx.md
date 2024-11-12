@@ -10,6 +10,8 @@ NX allows you to structure your project in one of three ways:
 2. Package based repo - multiple projects that use a single package.json and nested json modules.
 3. Integrated (Monorepo) - A repository with multiple projects that depend on each other via typescript imports and often employ a single version policy
 
+From playing with NX, it looks like the Heakton frontend is using nx in standlone mode using angular modules rather than the default component set up.
+
 ## Bundlers
 
 These are crucial in web development where we combined mutliple JS files and their dependecies into one file - typically
@@ -77,3 +79,21 @@ There is also an AppComponent - which is a standalone component where don't defi
 All these components gets loaded into the index.html
 
 Providers are giving a list of services that are available to the application. You can pass standalone APIs as well e.g. the routers
+
+# Creating a library
+
+## Errors
+
+```zenobe-onboarding-app git:(main) ✗ npm run build
+
+> @zenobe-onboarding-app/source@0.0.0 build
+> nx build
+
+
+ NX   Failed to process project graph. Run "nx reset" to fix this. Please report the issue if you keep seeing it.
+
+Pass --verbose to see the stacktraces.
+
+```
+
+Is often caused by invalid node versions, unclear error but still.
