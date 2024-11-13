@@ -67,3 +67,9 @@ Key Differences Between [[Define]] and [[Set]] Semantics
 Define semantics ([[Define]]): This is the newer standard. When useDefineForClassFields is true, fields are defined directly on the instance, ignoring any existing setter methods in the prototype chain. This is the default behavior of class fields in JavaScript as per the latest ECMAScript specification.
 
 Set semantics ([[Set]]): When useDefineForClassFields is false, TypeScript will use [[Set]] semantics, meaning it will check the prototype chain for a setter before defining the property directly on the instance. This was TypeScript’s legacy behavior and can sometimes lead to unintended results when subclassing.
+
+## Observables
+
+Observable is a representation of multiple future values. Example: stream of user clicks, or stream of server-sent events. Promise is a representation on single future value. Example: response from the server, result of long-lasting computation operation.
+Both representations give means to describe what to do with value "as soon as ot becomes available" or "when there was a error computing computing the value" or other cases like timeouts. One can argue that callback does the same and would be correct. Difference between callbacks and observales/promises is that observables/promises are composable. They allowing to describe "as soon as 3 of values are available to X" with way less complex logic than with callbacks.
+I like methaphor of water pipies to describe observables: you create pipe structure with splitting, joining, adding controls in the middle to react to water flow change. You can keep attaching pipes to existing piping system. And most important that you care about input-output of the pipe system, and things in between of input-output pipe can treated as blackbox (when it works).

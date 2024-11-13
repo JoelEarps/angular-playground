@@ -82,6 +82,8 @@ Providers are giving a list of services that are available to the application. Y
 
 # Creating a library
 
+`npx nx g @nx/angular:library libs/my-git-info`
+
 ## Errors
 
 ```zenobe-onboarding-app git:(main) ✗ npm run build
