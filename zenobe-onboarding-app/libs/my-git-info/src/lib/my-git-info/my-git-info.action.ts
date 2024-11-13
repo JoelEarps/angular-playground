@@ -2,7 +2,7 @@ import { createAction } from '@ngrx/store';
 
 export const fetchGitInfoActionSuccess = createAction(
   '[GitInfo] Get Git Information Success',
-  (gitInfo: string) => ({ gitInfo })
+  (gitInfo: string[]) => ({ gitInfo })
 );
 
 export const fetchGitInfoActionFailure = createAction(

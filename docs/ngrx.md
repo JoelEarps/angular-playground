@@ -79,3 +79,74 @@ create reducer needs an initial state and something to do upon an action being c
 on function
 
 ## Creating Selectors
+
+createFeatureSelectors
+createSelectors
+
+## Effects
+
+You can have functional or class based effects
+
+Effects are designed to extract any side-effects (such as Network calls) from components and handle potential race conditions.
+
+Key Concepts
+Effects isolate side effects from components, allowing for more pure components that select state and trigger updates and/or effects in ComponentStore(s).
+Effects are Observables listening for the inputs and piping them through the "prescription".
+Those inputs can either be values or Observables of values.
+Effects perform tasks, which are synchronous or asynchronous.
+effect method
+The effect method takes a callback with an Observable of values, that describes HOW new incoming values should be handled. Each new call of the effect would push the value into that Observable.
+
+```
+loadGitInfo$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(fetchGitInfo),
+      exhaustMap(() =>
+        this.fetchGitInfoService.getGitInfo().pipe(
+          map((gitTitle: any) => {
+            return fetchGitInfoActionSuccess(gitTitle);
+          }),
+          catchError(() => EMPTY)
+        )
+      )
+    );
+  });
+```
+
+This is an effect, what is happening here?
+
+## Bringing it all together
+
+```
+import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { provideRouter } from '@angular/router';
+import { appRoutes } from './app.routes';
+import { provideClientHydration } from '@angular/platform-browser';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { provideHttpClient } from '@angular/common/http';
+import {
+  myGitInfoReducer,
+  GitInfoEffects,
+} from '@zenobe-onboarding-app/my-git-info';
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideClientHydration(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(appRoutes),
+    provideStore({
+      reducers: myGitInfoReducer,
+    }),
+    provideEffects([GitInfoEffects]),
+    provideHttpClient(),
+  ],
+};
+```
+
+Adding reducers and Effects to the app config
+
+Inject store into app component via constructor
+
+## Dispatching Actions
+
+## On Init

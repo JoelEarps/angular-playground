@@ -6,12 +6,12 @@ import {
 } from './my-git-info.action';
 
 export interface MyGitInfoState {
-  gitInfo: string;
+  gitInfo: string[];
   error: string;
 }
 
 const initialState: MyGitInfoState = {
-  gitInfo: '',
+  gitInfo: [],
   error: '',
 };
 
@@ -26,7 +26,7 @@ export const myGitInfoReducer = createReducer(
   on(fetchGitInfoActionFailure, (state, actions) => {
     return {
       ...state,
-      gitInfo: '',
+      gitInfo: [],
       error: actions.error,
     };
   })
