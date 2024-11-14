@@ -15,4 +15,10 @@ export class MainNavComponent {
   constructor(private store: Store) {}
 
   public gitInfo$ = this.store.select(selectGitInfo);
+
+  isOpen = true;
+
+  toggleSidebar() {
+    this.isOpen = !this.isOpen;
+  }
 }

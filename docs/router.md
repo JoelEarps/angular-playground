@@ -35,4 +35,4 @@ Lazy Loading
 
 ### Common Problem
 
-https://www.youtube.com/watch?v=1x4GTeBq0Hg
+When routing if the page loads when
