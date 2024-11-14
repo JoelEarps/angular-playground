@@ -1,5 +1,30 @@
 # Angular Notes
 
+## How is a new app boostrapped
+
+```
+<body>
+    <app-root></app-root>
+</body>
+```
+
+In `index.html` you can see the following, which loads in the root of the application defined in
+
+```
+@Component({
+  standalone: true,
+  imports: [NxWelcomeComponent, RouterModule, CommonModule, MainNavComponent],
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss',
+})
+```
+
+The selector is what is use to identify the component in the component tree.
+
+Therefore to make a new component and use it we need to make sure we use the collect selector.
+You will also have to import it into which ever modules or services it needs
+
 ## Components
 
 `@components` decorator
@@ -13,6 +38,16 @@ A fundamental building block of an angular application. Typically they contain:
 ## How to make more components
 
 Do they all go in the same folder e.g. app or can you separate them into different modules like NestJS. Angular tries to recommend using the feature by folder structure. Where you separate components, services and styling for particular aspects of the app by feature.
+
+### Creating a new component
+
+For the purpose of the project I have created a new component to handle navigation
+
+Bootstrapping to the main application
+
+First use the nx command for building a new component
+
+`npx nx g @nx/angular:component src/app/components/navigation`
 
 ## Angular Material
 

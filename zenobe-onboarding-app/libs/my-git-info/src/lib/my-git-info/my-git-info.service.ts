@@ -7,6 +7,8 @@ export class MyGitInfoService {
   constructor(private readonly httpService: HttpClient) {}
 
   getGitInfo() {
-    return this.httpService.get('https://api.github.com/users/JoelEarps/repos');
+    return this.httpService.get<any>(
+      'https://api.github.com/users/JoelEarps/repos'
+    );
   }
 }

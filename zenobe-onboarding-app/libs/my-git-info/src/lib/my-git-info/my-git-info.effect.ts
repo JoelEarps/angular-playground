@@ -12,7 +12,9 @@ export class GitInfoEffects {
       exhaustMap(() =>
         this.fetchGitInfoService.getGitInfo().pipe(
           map((gitTitle: any) => {
-            return fetchGitInfoActionSuccess(gitTitle);
+            const names = gitTitle.map((item: any) => item.name);
+            return fetchGitInfoActionSuccess(names);
+            // return fetchGitInfoActionSuccess(gitTitle);
           }),
           catchError(() => EMPTY)
         )

@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import {
   fetchGitInfo,
@@ -8,10 +8,18 @@ import {
 } from '@zenobe-onboarding-app/my-git-info';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
+import { MainNavComponent } from './components/navigation.component';
 
 @Component({
   standalone: true,
-  imports: [NxWelcomeComponent, RouterModule, CommonModule],
+  imports: [
+    NxWelcomeComponent,
+    RouterModule,
+    RouterLink,
+    RouterOutlet,
+    CommonModule,
+    MainNavComponent,
+  ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -21,7 +29,7 @@ export class AppComponent implements OnInit {
 
   constructor(private store: Store) {}
 
-  public gitInfo$ = this.store.select(selectGitInfo);
+  // public gitInfo$ = this.store.select(selectGitInfo);
   ngOnInit() {
     this.store.dispatch(fetchGitInfo());
   }

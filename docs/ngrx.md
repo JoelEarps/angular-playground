@@ -176,3 +176,19 @@ Dispatching is the act of triggering an action to be performed.
 ngOnInit
 
 ngOnInit is a lifecycle hook provided by Angular, specifically designed for components. It is called once, after Angular has initialized all data-bound properties of a component and the component's view.
+
+## Dev Tools
+
+provideStoreDevTools
+
+You are able to see all the actions dispatched in the cloud
+
+```
+StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production, // Restrict extension to log-only mode
+      autoPause: true, // Pauses recording actions and state changes when the extension window is not open
+    }),
+```
+
+This is installed in Hekaton does this cause performance degredation
